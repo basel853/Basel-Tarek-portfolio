@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
-import { Github, Linkedin, Mail, ExternalLink, Code2, Brain, BarChart3, Award, Users, Briefcase, BookOpen, Download } from "lucide-react";
+import { Github, Linkedin, Mail, ExternalLink, Code2, Brain, BarChart3, Award, Users, Briefcase, BookOpen, Download, Phone } from "lucide-react";
+import ContactForm from "@/components/ContactForm";
 
 export default function Home() {
   const projects = [
@@ -395,33 +396,15 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Call to Action Section */}
-      <section id="contact" className="py-16 md:py-24">
+      {/* Contact Section */}
+      <section id="contact" className="py-16 md:py-24 bg-secondary/30">
         <div className="container">
-          <div className="max-w-2xl mx-auto text-center bg-card p-8 rounded-lg border border-border">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Let's Work Together</h2>
-            <p className="text-lg text-muted-foreground mb-8">
+          <div className="max-w-3xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">Let's Work Together</h2>
+            <p className="text-lg text-muted-foreground mb-12 text-center">
               I'm available for freelance projects, full-time opportunities, and collaborations. Whether you need data analysis, machine learning solutions, or business intelligence dashboards, let's connect.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="mailto:baseltarek226@gmail.com">
-                <Button size="lg">
-                  <Mail className="w-4 h-4 mr-2" />
-                  Send Me an Email
-                </Button>
-              </a>
-              <a href="tel:+201025813806">
-                <Button size="lg" variant="outline">
-                  📞 +20 102-581-3806
-                </Button>
-              </a>
-              <a href="https://www.linkedin.com/in/basel-tarek-044307321" target="_blank" rel="noopener noreferrer">
-                <Button size="lg" variant="outline">
-                  <Linkedin className="w-4 h-4 mr-2" />
-                  Connect on LinkedIn
-                </Button>
-              </a>
-            </div>
+            <ContactForm />
           </div>
         </div>
       </section>

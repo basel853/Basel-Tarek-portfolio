@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Github, Linkedin, Mail, ExternalLink, Code2, Brain, BarChart3, Award, Users, Briefcase, BookOpen, Download, Phone } from "lucide-react";
-import ContactForm from "@/components/ContactForm";
+
 import ContactModal from "@/components/ContactModal";
 
 export default function Home() {
@@ -407,12 +407,33 @@ export default function Home() {
       {/* Contact Section */}
       <section id="contact" className="py-16 md:py-24 bg-secondary/30">
         <div className="container">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">Let's Work Together</h2>
-            <p className="text-lg text-muted-foreground mb-12 text-center">
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Let's Work Together</h2>
+            <p className="text-lg text-muted-foreground mb-12">
               I'm available for freelance projects, full-time opportunities, and collaborations. Whether you need data analysis, machine learning solutions, or business intelligence dashboards, let's connect.
             </p>
-            <ContactForm />
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <button
+                onClick={() => setContactModal("email")}
+                className="px-6 py-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors font-medium flex items-center justify-center gap-2"
+              >
+                <Mail className="w-4 h-4" />
+                Send Me an Email
+              </button>
+              <button
+                onClick={() => setContactModal("phone")}
+                className="px-6 py-3 border border-border rounded-lg hover:bg-secondary transition-colors font-medium flex items-center justify-center gap-2"
+              >
+                <Phone className="w-4 h-4" />
+                Call Me
+              </button>
+              <a href="https://www.linkedin.com/in/basel-tarek-044307321" target="_blank" rel="noopener noreferrer">
+                <Button size="lg" variant="outline">
+                  <Linkedin className="w-4 h-4 mr-2" />
+                  Connect on LinkedIn
+                </Button>
+              </a>
+            </div>
           </div>
         </div>
       </section>

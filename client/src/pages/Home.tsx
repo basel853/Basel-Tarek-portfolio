@@ -1,8 +1,12 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Github, Linkedin, Mail, ExternalLink, Code2, Brain, BarChart3, Award, Users, Briefcase, BookOpen, Download, Phone } from "lucide-react";
 import ContactForm from "@/components/ContactForm";
+import ContactModal from "@/components/ContactModal";
 
 export default function Home() {
+  const [contactModal, setContactModal] = useState<"email" | "phone" | null>(null);
+
   const projects = [
     {
       title: "Sentiment Analysis App",
@@ -81,11 +85,7 @@ export default function Home() {
     },
     {
       category: "Frameworks & Tools",
-      items: ["Flask", "Git", "GitHub", "VS Code", "Cisco Packet Tracer"],
-    },
-    {
-      category: "Mobile Development",
-      items: ["Flutter", "Dart", "Android Studio"],
+      items: ["Flask", "Git", "GitHub", "VS Code", "Cisco Packet Tracer", "Flutter", "Dart"],
     },
     {
       category: "Soft Skills",
@@ -196,21 +196,29 @@ export default function Home() {
                 <Linkedin className="w-5 h-5" />
               </Button>
             </a>
-            <a href="mailto:baseltarek226@gmail.com">
-              <Button variant="ghost" size="icon" title="Email">
-                <Mail className="w-5 h-5" />
-              </Button>
-            </a>
+            <button
+              onClick={() => setContactModal("email")}
+              className="p-2 hover:bg-secondary rounded-lg transition-colors"
+              title="Email"
+            >
+              <Mail className="w-5 h-5" />
+            </button>
+            <button
+              onClick={() => setContactModal("phone")}
+              className="p-2 hover:bg-secondary rounded-lg transition-colors"
+              title="Phone"
+            >
+              <Phone className="w-5 h-5" />
+            </button>
           </div>
         </div>
       </nav>
 
       {/* Hero Section */}
-      <section className="relative py-20 md:py-32 overflow-hidden">
+      <section className="relative py-16 md:py-24 overflow-hidden">
         <div className="container">
           <div className="max-w-3xl mx-auto text-center">
-
-            <h1 className="text-5xl md:text-6xl font-bold mb-6">
+            <h1 className="text-5xl md:text-6xl font-bold mb-4">
               Data Scientist, Data Analyst & <span className="bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">ML Engineer</span>
             </h1>
             <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
@@ -227,7 +235,7 @@ export default function Home() {
                   Connect on LinkedIn
                 </Button>
               </a>
-              <a href="/Basel_Tarek_Osman_ATS_CV.pdf" target="_blank" rel="noopener noreferrer">
+              <a href="/Basel_Tarek_Osman_CV.docx" download>
                 <Button size="lg" variant="outline" className="w-full sm:w-auto">
                   <Download className="w-4 h-4 mr-2" />
                   Download CV
@@ -239,10 +247,10 @@ export default function Home() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-16 md:py-24 bg-secondary/30">
+      <section id="about" className="py-12 md:py-20 bg-secondary/30">
         <div className="container">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold mb-8">About Me</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">About Me</h2>
             <div className="space-y-4 text-lg text-muted-foreground leading-relaxed">
               <p>
                 I'm a results-driven Machine Learning Engineer and Data Scientist with a strong foundation in building end-to-end predictive models, data pipelines, and interactive analytical dashboards. I hold Kaggle Expert status, showcasing my proficiency in advanced ML techniques and competitive problem-solving.
@@ -256,7 +264,7 @@ export default function Home() {
             </div>
             
             {/* Trust Indicators */}
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mt-12">
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mt-10">
               <div className="bg-card p-4 rounded-lg border border-border hover:border-primary/50 transition-colors">
                 <div className="text-3xl font-bold text-primary">9+</div>
                 <div className="text-sm text-muted-foreground">Internships</div>
@@ -408,6 +416,18 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Contact Modals */}
+      <ContactModal
+        isOpen={contactModal === "email"}
+        onClose={() => setContactModal(null)}
+        type="email"
+      />
+      <ContactModal
+        isOpen={contactModal === "phone"}
+        onClose={() => setContactModal(null)}
+        type="phone"
+      />
 
       {/* Footer */}
       <footer className="border-t border-border py-8">

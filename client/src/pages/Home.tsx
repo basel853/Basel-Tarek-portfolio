@@ -86,6 +86,10 @@ export default function Home() {
       category: "Mobile Development",
       items: ["Flutter", "Dart", "Android Studio"],
     },
+    {
+      category: "Soft Skills",
+      items: ["Problem-Solving", "Communication", "Analytical Thinking", "Creativity", "Fast Learning", "Team Collaboration", "Innovation", "Teamwork"],
+    },
   ];
 
   const experiences = [
@@ -204,11 +208,9 @@ export default function Home() {
       <section className="relative py-20 md:py-32 overflow-hidden">
         <div className="container">
           <div className="max-w-3xl mx-auto text-center">
-            <div className="inline-block mb-6 px-4 py-2 bg-primary/10 rounded-full">
-              <span className="text-sm font-medium text-primary">🎯 Kaggle Expert | Data Scientist</span>
-            </div>
+
             <h1 className="text-5xl md:text-6xl font-bold mb-6">
-              Data Scientist & <span className="bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">ML Engineer</span>
+              Data Scientist, Data Analyst & <span className="bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">ML Engineer</span>
             </h1>
             <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
               Transforming complex data into actionable insights and intelligent solutions. Specialized in Python, Natural Language Processing, Computer Vision, and predictive modeling with proven expertise from National Telecommunication Institute (NTI) and industry internships.
@@ -224,7 +226,7 @@ export default function Home() {
                   Connect on LinkedIn
                 </Button>
               </a>
-              <a href="/Basel_Tarek_Osman_ATS_CV.pdf" download>
+              <a href="/Basel_Tarek_Osman_ATS_CV.pdf" target="_blank" rel="noopener noreferrer">
                 <Button size="lg" variant="outline" className="w-full sm:w-auto">
                   <Download className="w-4 h-4 mr-2" />
                   Download CV
@@ -282,7 +284,7 @@ export default function Home() {
       {/* Skills Section */}
       <section id="skills" className="py-16 md:py-24">
         <div className="container">
-          <h2 className="text-3xl md:text-4xl font-bold mb-12">Technical Skills</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-12">Skills</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {skills.map((skillGroup, idx) => (
               <div key={idx} className="bg-card p-6 rounded-lg border border-border hover:border-primary/50 transition-colors">
@@ -406,6 +408,11 @@ export default function Home() {
                 <Button size="lg">
                   <Mail className="w-4 h-4 mr-2" />
                   Send Me an Email
+                </Button>
+              </a>
+              <a href="tel:+201025813806">
+                <Button size="lg" variant="outline">
+                  📞 +20 102-581-3806
                 </Button>
               </a>
               <a href="https://www.linkedin.com/in/basel-tarek-044307321" target="_blank" rel="noopener noreferrer">

@@ -5,7 +5,7 @@ import { Github, Linkedin, Mail, ExternalLink, Code2, Brain, BarChart3, Award, U
 import ContactModal from "@/components/ContactModal";
 
 export default function Home() {
-  const [contactModal, setContactModal] = useState<"email" | "phone" | null>(null);
+  const [contactModal, setContactModal] = useState<"email" | "phone" | "kaggle" | null>(null);
 
   const projects = [
     {
@@ -210,7 +210,16 @@ export default function Home() {
             >
               <Phone className="w-5 h-5" />
             </button>
-          </div>
+            <button
+              onClick={() => setContactModal("kaggle")}
+              className="p-2 hover:bg-secondary rounded-lg transition-colors"
+              title="Kaggle"
+            >
+              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18.825 23.859c-.022.137-.207.274-.348.274h-2.882c-.348 0-.555-.348-.555-.829V.829C14.04.348 14.247 0 14.595 0h2.882c.141 0 .326.137.348.274.274 1.781.829 5.378 2.329 8.395 1.5 3.017 4.379 6.209 6.708 8.395-2.329 2.186-5.208 5.378-6.708 8.395-1.5 3.017-2.055 6.614-2.329 8.395z"/>
+              </svg>
+            </button>
+            </div>
         </div>
       </nav>
 
@@ -427,6 +436,15 @@ export default function Home() {
                 <Phone className="w-4 h-4" />
                 Call Me
               </button>
+              <button
+                onClick={() => setContactModal("kaggle")}
+                className="px-6 py-3 border border-border rounded-lg hover:bg-secondary transition-colors font-medium flex items-center justify-center gap-2"
+              >
+                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M18.825 23.859c-.022.137-.207.274-.348.274h-2.882c-.348 0-.555-.348-.555-.829V.829C14.04.348 14.247 0 14.595 0h2.882c.141 0 .326.137.348.274.274 1.781.829 5.378 2.329 8.395 1.5 3.017 4.379 6.209 6.708 8.395-2.329 2.186-5.208 5.378-6.708 8.395-1.5 3.017-2.055 6.614-2.329 8.395z"/>
+                </svg>
+                Visit Kaggle
+              </button>
               <a href="https://www.linkedin.com/in/basel-tarek-044307321" target="_blank" rel="noopener noreferrer">
                 <Button size="lg" variant="outline">
                   <Linkedin className="w-4 h-4 mr-2" />
@@ -448,6 +466,11 @@ export default function Home() {
         isOpen={contactModal === "phone"}
         onClose={() => setContactModal(null)}
         type="phone"
+      />
+      <ContactModal
+        isOpen={contactModal === "kaggle"}
+        onClose={() => setContactModal(null)}
+        type="kaggle"
       />
 
       {/* Footer */}

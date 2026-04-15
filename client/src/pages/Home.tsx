@@ -69,7 +69,7 @@ export default function Home() {
   const skills = [
     {
       category: "Programming Languages",
-      items: ["Python", "SQL", "Dart", "TypeScript"],
+      items: ["Python", "SQL", "Dart"],
     },
     {
       category: "Data Science & ML",

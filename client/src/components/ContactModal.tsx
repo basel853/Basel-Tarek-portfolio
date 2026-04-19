@@ -1,10 +1,11 @@
+import { useState } from "react";
 import { X, Mail, Phone, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface ContactModalProps {
   isOpen: boolean;
   onClose: () => void;
-  type: "email" | "phone" | "kaggle";
+  type: "email" | "phone";
 }
 
 export default function ContactModal({ isOpen, onClose, type }: ContactModalProps) {
@@ -67,7 +68,7 @@ export default function ContactModal({ isOpen, onClose, type }: ContactModalProp
               Close
             </Button>
           </div>
-        ) : type === "phone" ? (
+        ) : (
           <div className="space-y-6">
             <div className="flex items-center gap-3">
               <Phone className="w-8 h-8 text-primary" />
@@ -89,43 +90,6 @@ export default function ContactModal({ isOpen, onClose, type }: ContactModalProp
             <div className="space-y-3">
               <p className="text-sm text-muted-foreground">
                 Available for calls and WhatsApp messages
-              </p>
-            </div>
-
-            <Button
-              onClick={onClose}
-              className="w-full"
-            >
-              Close
-            </Button>
-          </div>
-        ) : (
-          <div className="space-y-6">
-            <div className="flex items-center gap-3">
-              <svg className="w-8 h-8 text-primary" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path d="M18.825 23.859c-.022.137-.207.274-.348.274h-2.882c-.348 0-.555-.348-.555-.829V.829C14.04.348 14.247 0 14.595 0h2.882c.141 0 .326.137.348.274.274 1.781.829 5.378 2.329 8.395 1.5 3.017 4.379 6.209 6.708 8.395-2.329 2.186-5.208 5.378-6.708 8.395-1.5 3.017-2.055 6.614-2.329 8.395z"/>
-              </svg>
-              <h3 className="text-2xl font-bold">Visit Kaggle</h3>
-            </div>
-
-            <div className="space-y-3">
-              <p className="text-muted-foreground">
-                Check out my Kaggle profile:
-              </p>
-              <a
-                href="https://www.kaggle.com/baseltarek"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block p-4 bg-secondary rounded-lg hover:bg-secondary/80 transition-colors"
-              >
-                <p className="font-semibold text-primary">kaggle.com/baseltarek</p>
-                <p className="text-xs text-muted-foreground mt-1">Kaggle Expert - Data Science & ML</p>
-              </a>
-            </div>
-
-            <div className="space-y-3">
-              <p className="text-sm text-muted-foreground">
-                View my competitions, datasets, and notebooks on Kaggle.
               </p>
             </div>
 

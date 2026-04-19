@@ -5,7 +5,7 @@ import { Github, Linkedin, Mail, ExternalLink, Code2, Brain, BarChart3, Award, U
 import ContactModal from "@/components/ContactModal";
 
 export default function Home() {
-  const [contactModal, setContactModal] = useState<"email" | "phone" | "kaggle" | null>(null);
+  const [contactModal, setContactModal] = useState<"email" | "phone" | null>(null);
 
   const projects = [
     {
@@ -98,146 +98,215 @@ export default function Home() {
       title: "Artificial Intelligence Intern",
       company: "Sprints",
       period: "July 2025 – September 2025",
-      description: "Developing AI solutions and machine learning models for real-world applications.",
+      highlights: ["End-to-end ML workflows", "Model deployment", "Real-world problem solving"],
     },
     {
-      title: "Machine Learning Intern",
+      title: "Python for Data Analysis Intern",
       company: "National Telecommunication Institute (NTI)",
-      period: "March 2024 – October 2024",
-      description: "Completed comprehensive ML training with hands-on projects in supervised and unsupervised learning.",
+      period: "November 2024 – February 2025",
+      highlights: ["Exploratory Data Analysis", "Data visualization", "Feature engineering"],
+      nti: true,
     },
     {
-      title: "Data Science Freelancer",
-      company: "Freelance Yard",
-      period: "October 2024 – Present",
-      description: "Developed EarthlyEats Warehouse Dashboard under NTI supervision for supply chain optimization.",
+      title: "Machine Learning for Data Analysis Training",
+      company: "National Telecommunication Institute (NTI)",
+      period: "August 2024 – September 2024",
+      highlights: ["ML model building", "Data preparation", "AI challenges"],
+      nti: true,
+    },
+    {
+      title: "AI & Machine Learning Intern",
+      company: "Orange Digital Center (AMIT Learning)",
+      period: "November 2024 – December 2024",
+      highlights: ["Supervised learning", "Real-world datasets", "Model implementation"],
+    },
+    {
+      title: "Data Analyst Intern",
+      company: "Creativa Hub Benha",
+      period: "September 2024 – October 2024",
+      highlights: ["Dashboard design", "Data transformation", "Business insights"],
+    },
+    {
+      title: "Data Analyst Intern",
+      company: "Holol",
+      period: "September 2024",
+      highlights: ["Data exploration", "Report generation", "Preprocessing techniques"],
+    },
+    {
+      title: "InnovEgypt Internship Program",
+      company: "Creativa Giza (ITIDA and TIEC)",
+      period: "January 2024 – February 2024",
+      highlights: ["Innovation methodology", "Startup development", "Problem solving"],
+    },
+    {
+      title: "Network Engineer Intern",
+      company: "Thebes Academy & Link Co.",
+      period: "August 2023 – October 2023",
+      highlights: ["Network configuration", "Cisco Packet Tracer", "Troubleshooting"],
+    },
+    {
+      title: "Flutter Developer Intern",
+      company: "Thebes Academy",
+      period: "January 2022 – December 2023",
+      highlights: ["Mobile UI development", "State management", "Cross-platform testing"],
     },
   ];
 
+  const certifications = [
+    { name: "Machine Learning for Data Analysis", issuer: "National Telecommunication Institute (NTI)" },
+    { name: "Python for Data Analysis", issuer: "National Telecommunication Institute (NTI)" },
+    { name: "Artificial Intelligence", issuer: "Orange Digital Center & AMIT Learning" },
+    { name: "Data Analysis", issuer: "Creativa Hub Benha" },
+    { name: "Artificial Intelligence", issuer: "Orange Digital Center Digital HUB (D-HUB)" },
+    { name: "InnovEgypt Internship Program", issuer: "ITIDA and TIEC" },
+    { name: "Networking", issuer: "Thebes Academy" },
+    { name: "Blockchain Basics", issuer: "EYouth" },
+    { name: "Flutter Development", issuer: "Thebes Academy" },
+  ];
+
+  const socialLinks = [
+    { icon: Github, label: "GitHub", url: "https://github.com/basel853" },
+    { icon: Linkedin, label: "LinkedIn", url: "https://www.linkedin.com/in/basel-tarek-044307321" },
+    { icon: Mail, label: "Email", url: "mailto:baseltarek226@gmail.com" },
+  ];
+
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-background">
       {/* Navigation */}
-      <nav className="sticky top-0 z-50 bg-slate-900 text-white shadow-lg">
-        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-          <div className="text-2xl font-bold text-blue-500">Basel Tarek</div>
-          <ul className="flex gap-8">
-            <li><a href="#about" className="hover:text-blue-400 transition">About</a></li>
-            <li><a href="#projects" className="hover:text-blue-400 transition">Projects</a></li>
-            <li><a href="#skills" className="hover:text-blue-400 transition">Skills</a></li>
-            <li><a href="#contact" className="hover:text-blue-400 transition">Contact</a></li>
-          </ul>
+      <nav className="sticky top-0 z-50 bg-background/80 backdrop-blur-sm border-b border-border">
+        <div className="container flex items-center justify-between h-16">
+          <div className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
+            Basel Tarek
+          </div>
+          <div className="hidden md:flex items-center gap-6">
+            <a href="#about" className="text-sm hover:text-primary transition-colors">About</a>
+            <a href="#skills" className="text-sm hover:text-primary transition-colors">Skills</a>
+            <a href="#projects" className="text-sm hover:text-primary transition-colors">Projects</a>
+            <a href="#experience" className="text-sm hover:text-primary transition-colors">Experience</a>
+            <a href="#contact" className="text-sm hover:text-primary transition-colors">Contact</a>
+          </div>
+          <div className="flex gap-2">
+            <a href="https://github.com/basel853" target="_blank" rel="noopener noreferrer">
+              <Button variant="ghost" size="icon" title="GitHub">
+                <Github className="w-5 h-5" />
+              </Button>
+            </a>
+            <a href="https://www.linkedin.com/in/basel-tarek-044307321" target="_blank" rel="noopener noreferrer">
+              <Button variant="ghost" size="icon" title="LinkedIn">
+                <Linkedin className="w-5 h-5" />
+              </Button>
+            </a>
+            <button
+              onClick={() => setContactModal("email")}
+              className="p-2 hover:bg-secondary rounded-lg transition-colors"
+              title="Email"
+            >
+              <Mail className="w-5 h-5" />
+            </button>
+            <button
+              onClick={() => setContactModal("phone")}
+              className="p-2 hover:bg-secondary rounded-lg transition-colors"
+              title="Phone"
+            >
+              <Phone className="w-5 h-5" />
+            </button>
+          </div>
         </div>
       </nav>
 
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-24 text-center">
-        <div className="container mx-auto px-4">
-          <h1 className="text-5xl font-bold mb-4">Basel Tarek Osman</h1>
-          <div className="text-2xl mb-4">Data Scientist | Machine Learning Engineer | Data Analyst</div>
-          <p className="text-lg opacity-90 mb-8 max-w-2xl mx-auto">
-            Transforming Complex Data Into Actionable Business Insights | Building End-to-End ML Solutions
-          </p>
-          <div className="flex gap-4 justify-center flex-wrap">
-            <a href="#projects" className="bg-green-500 hover:bg-green-600 text-white px-8 py-3 rounded-full font-bold transition transform hover:-translate-y-1">
-              View My Work
-            </a>
-            <a href="#contact" className="bg-white hover:bg-gray-100 text-blue-600 px-8 py-3 rounded-full font-bold transition transform hover:-translate-y-1">
-              Get In Touch
-            </a>
+      <section className="relative py-16 md:py-24 overflow-hidden">
+        <div className="container">
+          <div className="max-w-3xl mx-auto text-center">
+            <h1 className="text-5xl md:text-6xl font-bold mb-4">
+              Data Scientist, Data Analyst & <span className="bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">ML Engineer</span>
+            </h1>
+            <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
+              Transforming complex data into actionable insights and intelligent solutions. Specialized in Python, Natural Language Processing, Computer Vision, and predictive modeling with proven expertise from National Telecommunication Institute (NTI) and industry internships.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a href="#projects">
+                <Button size="lg" className="w-full sm:w-auto">
+                  View My Work
+                </Button>
+              </a>
+              <a href="https://www.linkedin.com/in/basel-tarek-044307321" target="_blank" rel="noopener noreferrer">
+                <Button size="lg" variant="outline" className="w-full sm:w-auto">
+                  Connect on LinkedIn
+                </Button>
+              </a>
+              <a href="/Basel_Tarek_Osman_CV.docx" download>
+                <Button size="lg" variant="outline" className="w-full sm:w-auto">
+                  <Download className="w-4 h-4 mr-2" />
+                  Download CV
+                </Button>
+              </a>
+            </div>
           </div>
         </div>
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-12 pb-4 relative inline-block w-full">
-            About Me
-            <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-blue-600"></span>
-          </h2>
-          
-          <div className="grid md:grid-cols-2 gap-8">
-            <div>
-              <p className="mb-4 text-lg leading-relaxed">
-                I'm a passionate Machine Learning Engineer with hands-on experience building end-to-end predictive models, data pipelines, and analytical dashboards. My journey in data science started at the National Telecommunication Institute (NTI), where I developed expertise in Python, Scikit-learn, NLP, and Power BI.
+      <section id="about" className="py-12 md:py-20 bg-secondary/30">
+        <div className="container">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">About Me</h2>
+            <div className="space-y-4 text-lg text-muted-foreground leading-relaxed">
+              <p>
+                I'm a results-driven Machine Learning Engineer and Data Scientist with a strong foundation in building end-to-end predictive models, data pipelines, and interactive analytical dashboards. I hold Kaggle Expert status, showcasing my proficiency in advanced ML techniques and competitive problem-solving.
               </p>
-              <p className="mb-4 text-lg leading-relaxed">
-                I specialize in transforming complex datasets into actionable business insights and deploying production-ready solutions. Whether it's sentiment analysis, object detection, or predictive modeling, I bring a strategic and technical approach to every challenge.
+              <p>
+                My expertise spans Python, Scikit-learn, Natural Language Processing, Computer Vision, and Data Analysis. Through comprehensive internships at the National Telecommunication Institute (NTI), Orange Digital Center, Sprints, and other leading organizations, I've developed practical skills in transforming complex datasets into actionable business insights.
               </p>
-              <p className="text-lg leading-relaxed">
-                Beyond my technical skills, I'm a continuous learner committed to staying at the forefront of machine learning innovations. I thrive in collaborative environments and love contributing to projects that make a real-world impact.
+              <p>
+                I'm passionate about solving real-world problems through data-driven solutions, building scalable machine learning systems, and continuously expanding my knowledge in AI and emerging technologies. My work has focused on practical applications including sentiment analysis, object detection, predictive modeling, and business intelligence dashboards.
               </p>
             </div>
-
-            <div>
-              {/* Stats */}
-              <div className="grid grid-cols-2 gap-4 mb-6">
-                <div className="bg-white p-6 rounded-lg shadow text-center">
-                  <div className="text-3xl font-bold text-blue-600">9+</div>
-                  <div className="text-gray-600 font-semibold">Internships</div>
-                </div>
-                <div className="bg-white p-6 rounded-lg shadow text-center">
-                  <div className="text-3xl font-bold text-blue-600">8+</div>
-                  <div className="text-gray-600 font-semibold">ML Projects</div>
-                </div>
-                <div className="bg-white p-6 rounded-lg shadow text-center">
-                  <div className="text-3xl font-bold text-blue-600">90%+</div>
-                  <div className="text-gray-600 font-semibold">Avg Accuracy</div>
-                </div>
-                <div className="bg-white p-6 rounded-lg shadow text-center">
-                  <div className="text-3xl font-bold text-blue-600">10+</div>
-                  <div className="text-gray-600 font-semibold">Certifications</div>
-                </div>
+            
+            {/* Trust Indicators */}
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mt-10">
+              <div className="bg-card p-4 rounded-lg border border-border hover:border-primary/50 transition-colors">
+                <div className="text-3xl font-bold text-primary">9+</div>
+                <div className="text-sm text-muted-foreground">Internships</div>
               </div>
-
-              {/* Highlights */}
-              <div className="grid grid-cols-1 gap-3">
-                <div className="bg-white p-4 rounded-lg border-l-4 border-blue-600 shadow">
-                  <strong className="text-blue-600 block mb-1">🎓 Education</strong>
-                  <span className="text-gray-700">Bachelor of Computer Science, Thebes Academy (GPA: 3.16/4.0)</span>
-                </div>
-                <div className="bg-white p-4 rounded-lg border-l-4 border-blue-600 shadow">
-                  <strong className="text-blue-600 block mb-1">🏆 Recognition</strong>
-                  <span className="text-gray-700">Kaggle Expert | NTI Trained | Project Leader</span>
-                </div>
-                <div className="bg-white p-4 rounded-lg border-l-4 border-blue-600 shadow">
-                  <strong className="text-blue-600 block mb-1">🔧 Specialization</strong>
-                  <span className="text-gray-700">ML, NLP, Computer Vision, BI, Data Engineering</span>
-                </div>
-                <div className="bg-white p-4 rounded-lg border-l-4 border-blue-600 shadow">
-                  <strong className="text-blue-600 block mb-1">🌍 Location</strong>
-                  <span className="text-gray-700">Al Qalyubia, Egypt | Available for Remote Work</span>
-                </div>
+              <div className="bg-card p-4 rounded-lg border border-border hover:border-primary/50 transition-colors">
+                <div className="text-3xl font-bold text-primary">6+</div>
+                <div className="text-sm text-muted-foreground">Major Projects</div>
+              </div>
+              <div className="bg-card p-4 rounded-lg border border-border hover:border-primary/50 transition-colors">
+                <div className="text-3xl font-bold text-primary">3.16</div>
+                <div className="text-sm text-muted-foreground">GPA (4.0)</div>
+              </div>
+              <div className="bg-card p-4 rounded-lg border border-border hover:border-primary/50 transition-colors">
+                <div className="text-3xl font-bold text-primary">Expert</div>
+                <div className="text-sm text-muted-foreground">Kaggle Level</div>
+              </div>
+              <div className="bg-card p-4 rounded-lg border border-border hover:border-primary/50 transition-colors">
+                <div className="text-3xl font-bold text-primary">9</div>
+                <div className="text-sm text-muted-foreground">Certifications</div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Projects Section */}
-      <section id="projects" className="py-20">
-        <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-12 pb-4 relative inline-block w-full">
-            Featured Projects
-            <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-blue-600"></span>
-          </h2>
-          
-          <div className="grid md:grid-cols-3 gap-6">
-            {projects.map((project, idx) => (
-              <div key={idx} className="bg-white rounded-lg shadow-lg hover:shadow-xl hover:-translate-y-2 transition border-t-4 border-blue-600">
-                <div className="bg-gradient-to-r from-blue-600 to-blue-800 text-white p-4 min-h-24 flex items-center">
-                  <h3 className="text-lg font-bold">{project.title}</h3>
-                </div>
-                <div className="p-4">
-                  <p className="text-gray-600 mb-3">{project.description}</p>
-                  <div className="flex flex-wrap gap-2 mb-3">
-                    {project.tech.map((t, i) => (
-                      <span key={i} className="bg-gray-100 text-blue-600 px-3 py-1 rounded-full text-sm font-semibold">
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-                  <div className="text-green-600 font-bold">✓ {project.category}</div>
+      {/* Skills Section */}
+      <section id="skills" className="py-16 md:py-24">
+        <div className="container">
+          <h2 className="text-3xl md:text-4xl font-bold mb-12">Skills</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {skills.map((skillGroup, idx) => (
+              <div key={idx} className="bg-card p-6 rounded-lg border border-border hover:border-primary/50 transition-colors">
+                <h3 className="text-lg font-semibold mb-4 text-primary">{skillGroup.category}</h3>
+                <div className="flex flex-wrap gap-2">
+                  {skillGroup.items.map((skill, i) => (
+                    <span
+                      key={i}
+                      className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium hover:bg-primary/20 transition-colors"
+                    >
+                      {skill}
+                    </span>
+                  ))}
                 </div>
               </div>
             ))}
@@ -245,25 +314,67 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Skills Section */}
-      <section id="skills" className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-12 pb-4 relative inline-block w-full">
-            Skills
-            <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-blue-600"></span>
-          </h2>
-          
-          <div className="grid md:grid-cols-3 gap-6">
-            {skills.map((skillGroup, idx) => (
-              <div key={idx} className="bg-white p-6 rounded-lg shadow">
-                <h3 className="text-lg font-bold text-blue-600 mb-4 pb-2 border-b-2 border-blue-600">
-                  {skillGroup.category}
-                </h3>
-                <ul className="space-y-2">
-                  {skillGroup.items.map((item, i) => (
-                    <li key={i} className="flex items-center text-gray-700">
-                      <span className="text-green-600 font-bold mr-3">✓</span>
-                      {item}
+      {/* Projects Section */}
+      <section id="projects" className="py-16 md:py-24 bg-secondary/30">
+        <div className="container">
+          <h2 className="text-3xl md:text-4xl font-bold mb-12">Featured Projects</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {projects.map((project, idx) => {
+              const IconComponent = project.icon;
+              return (
+                <div key={idx} className="bg-card p-6 rounded-lg border border-border hover:border-primary/50 transition-all hover:shadow-lg group">
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="flex items-center gap-2">
+                      <IconComponent className="w-8 h-8 text-primary group-hover:scale-110 transition-transform" />
+                      {project.nti && (
+                        <span className="px-2 py-1 bg-blue-100 text-blue-700 rounded text-xs font-semibold">NTI</span>
+                      )}
+                    </div>
+                    {project.link !== "#" && (
+                      <a href={project.link} target="_blank" rel="noopener noreferrer">
+                        <ExternalLink className="w-5 h-5 text-muted-foreground hover:text-primary transition-colors" />
+                      </a>
+                    )}
+                  </div>
+                  <h3 className="text-lg font-semibold mb-2">{project.title}</h3>
+                  <p className="text-sm text-muted-foreground mb-3">{project.description}</p>
+                  <p className="text-xs text-muted-foreground mb-4 leading-relaxed">{project.details}</p>
+                  <div className="flex flex-wrap gap-2">
+                    {project.tech.map((tech, i) => (
+                      <span key={i} className="px-2 py-1 bg-secondary text-secondary-foreground rounded text-xs font-medium">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Experience Section */}
+      <section id="experience" className="py-16 md:py-24">
+        <div className="container">
+          <h2 className="text-3xl md:text-4xl font-bold mb-12">Professional Experience</h2>
+          <div className="max-w-3xl mx-auto space-y-6">
+            {experiences.map((exp, idx) => (
+              <div key={idx} className="bg-card p-6 rounded-lg border border-border hover:border-primary/50 transition-colors">
+                <div className="flex items-start justify-between mb-2">
+                  <div>
+                    <h3 className="text-lg font-semibold">{exp.title}</h3>
+                    <p className="text-primary font-medium">{exp.company}</p>
+                  </div>
+                  {exp.nti && (
+                    <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-semibold">NTI Supervised</span>
+                  )}
+                </div>
+                <p className="text-sm text-muted-foreground mb-3">{exp.period}</p>
+                <ul className="space-y-1">
+                  {exp.highlights.map((highlight, i) => (
+                    <li key={i} className="text-sm text-muted-foreground flex items-start gap-2">
+                      <span className="text-primary mt-1">•</span>
+                      <span>{highlight}</span>
                     </li>
                   ))}
                 </ul>
@@ -273,45 +384,93 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section id="contact" className="py-20 bg-gradient-to-r from-slate-900 to-slate-800 text-white text-center">
-        <div className="container mx-auto px-4 max-w-2xl">
-          <h2 className="text-4xl font-bold mb-4 pb-4 relative inline-block w-full">
-            Let's Connect
-            <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-green-500"></span>
-          </h2>
-          
-          <p className="text-lg opacity-90 mb-8">
-            I'm always interested in hearing about new projects and opportunities. Whether you have a question or just want to say hello, feel free to reach out!
-          </p>
-          
-          <a href="mailto:baseltarek226@gmail.com" className="inline-block bg-green-500 hover:bg-green-600 text-white px-8 py-3 rounded-full font-bold transition transform hover:-translate-y-1 mb-8">
-            Send Me an Email
-          </a>
-          
-          <div className="flex gap-4 justify-center mb-8">
-            <a href="https://www.linkedin.com/in/basel-tarek-044307321" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-blue-600 hover:bg-green-500 rounded-full flex items-center justify-center font-bold transition transform hover:-translate-y-1">
-              in
-            </a>
-            <a href="https://github.com/basel853" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-blue-600 hover:bg-green-500 rounded-full flex items-center justify-center font-bold transition transform hover:-translate-y-1">
-              GH
-            </a>
-            <a href="https://kaggle.com/baseltarek" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-blue-600 hover:bg-green-500 rounded-full flex items-center justify-center font-bold transition transform hover:-translate-y-1">
-              KG
-            </a>
+      {/* Certifications Section */}
+      <section className="py-16 md:py-24 bg-secondary/30">
+        <div className="container">
+          <h2 className="text-3xl md:text-4xl font-bold mb-12">Certifications & Training</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {certifications.map((cert, idx) => (
+              <div key={idx} className="bg-card p-4 rounded-lg border border-border hover:border-primary/50 transition-colors">
+                <div className="flex items-start gap-3">
+                  <Award className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
+                  <div>
+                    <p className="font-semibold text-sm">{cert.name}</p>
+                    <p className="text-xs text-muted-foreground">{cert.issuer}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
-          
-          <p className="opacity-80">
-            <strong>Email:</strong> baseltarek226@gmail.com<br/>
-            <strong>Phone:</strong> +201025813806<br/>
-            <strong>Location:</strong> Al Qalyubia, Egypt
-          </p>
         </div>
       </section>
 
+      {/* Contact Section */}
+      <section id="contact" className="py-16 md:py-24 bg-secondary/30">
+        <div className="container">
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Let's Work Together</h2>
+            <p className="text-lg text-muted-foreground mb-12">
+              I'm available for freelance projects, full-time opportunities, and collaborations. Whether you need data analysis, machine learning solutions, or business intelligence dashboards, let's connect.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <button
+                onClick={() => setContactModal("email")}
+                className="px-6 py-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors font-medium flex items-center justify-center gap-2"
+              >
+                <Mail className="w-4 h-4" />
+                Send Me an Email
+              </button>
+              <button
+                onClick={() => setContactModal("phone")}
+                className="px-6 py-3 border border-border rounded-lg hover:bg-secondary transition-colors font-medium flex items-center justify-center gap-2"
+              >
+                <Phone className="w-4 h-4" />
+                Call Me
+              </button>
+              <a href="https://www.linkedin.com/in/basel-tarek-044307321" target="_blank" rel="noopener noreferrer">
+                <Button size="lg" variant="outline">
+                  <Linkedin className="w-4 h-4 mr-2" />
+                  Connect on LinkedIn
+                </Button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Modals */}
+      <ContactModal
+        isOpen={contactModal === "email"}
+        onClose={() => setContactModal(null)}
+        type="email"
+      />
+      <ContactModal
+        isOpen={contactModal === "phone"}
+        onClose={() => setContactModal(null)}
+        type="phone"
+      />
+
       {/* Footer */}
-      <footer className="bg-slate-900 text-white text-center py-6 border-t-2 border-blue-600">
-        <p>&copy; 2024 Basel Tarek Osman. All rights reserved. | Data Scientist | Machine Learning Engineer</p>
+      <footer className="border-t border-border py-8">
+        <div className="container">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+            <div className="text-sm text-muted-foreground">
+              © 2024 Basel Tarek Osman. All rights reserved.
+            </div>
+            <div className="flex gap-4">
+              {socialLinks.map((link, idx) => {
+                const Icon = link.icon;
+                return (
+                  <a key={idx} href={link.url} target="_blank" rel="noopener noreferrer" title={link.label}>
+                    <Button variant="ghost" size="icon">
+                      <Icon className="w-5 h-5" />
+                    </Button>
+                  </a>
+                );
+              })}
+            </div>
+          </div>
+        </div>
       </footer>
     </div>
   );
